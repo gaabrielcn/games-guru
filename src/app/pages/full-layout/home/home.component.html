@@ -1,0 +1,151 @@
+<div class="icon-container">
+  <button (click)="openDialog()" mat-fab style="background-color: #E5E5E5">
+    <mat-icon>filter_alt</mat-icon>
+  </button>
+</div>
+
+<div class="grid-container mt-4" (scroll)="onScroll($event)">
+    @if (rowData.length >= 0) {
+      @for (game of rowData; track $index) {
+        <mat-card class="grid-item cursor clickable" (click)="directGameItem(game['game_id'])">
+          <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+            <div class="mb-2">
+              <img [height]="(game?.sample_cover?.height / 3)" [width]="(game?.sample_cover?.width / 3)" [src]="game?.sample_cover?.thumbnail_image">
+              <div class="row mt-5">
+                <p class="fw-semibold title">{{game?.title}} </p>
+                <p class="text-align fst-italic" [innerHTML]="game?.description"></p>
+                <p class="fw-semibold title mt-3">Genre</p>
+                @for(genre of game?.genres; track $index) {
+                  <div class="d-inline text-start">
+                    <p class="fw-semibold subtitle d-inline">Genre Category: </p>
+                    <p class="d-inline">{{genre?.genre_category}} </p>
+                  </div>
+                  <div class="d-inline text-start">
+                    <p class="fw-semibold subtitle d-inline">Genre Name: </p>
+                    <p class="d-inline">{{genre?.genre_name}} </p>
+                  </div>
+                }
+                <p class="fw-semibold title mt-3">Plataforms</p>
+                @for(plataform of game?.platforms; track $index) {
+                  <div class="d-inline text-start">
+                    <p class="fw-semibold subtitle d-inline">{{plataform?.platform_name + ': '}}</p>
+                    <p class="d-inline">First Release date: {{plataform?.first_release_date}}</p>
+                  </div>
+                }
+                <div class="d-inline text-start">
+                  <p class="fw-semibold subtitle d-inline">Mobi URL: </p>
+                  <a class="d-inline" [href]="game?.moby_url" target="_blank" style="font-size: 12px">{{ game?.moby_url }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="d-inline text-start">
+                <p class="mb-0 fw-semibold subtitle d-inline"> Evaluation: </p>
+                <p class="d-inline"> Evaluation: {{game?.moby_score}} </p>
+              </div>
+              <div class="d-inline text-start">
+                <p class="fw-semibold subtitle d-inline"> Number of votes: </p>
+                <p class="d-inline"> Number of votes: {{game?.num_votes}} </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    }
+    @if (skeletonLoader) {
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="grid-item">
+        <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+          <div class="mb-2">
+            <ngx-skeleton-loader count="1" appearance="circle" />
+            <div class="row mt-5">
+              <ngx-skeleton-loader count="10" appearance="line" />
+            </div>
+          </div>
+          <div class="row">
+            <ngx-skeleton-loader count="2" appearance="line" />
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+   </div>
+
+

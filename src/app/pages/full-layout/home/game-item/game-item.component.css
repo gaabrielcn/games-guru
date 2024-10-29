@@ -1,0 +1,13 @@
+:host {
+  height: 85% !important;
+  overflow: auto !important;
+  display: flex !important;
+  flex-direction: column;
+}
+.image-container {
+  margin-right: 16px;
+}
+
+.text-container {
+  flex-grow: 1;
+}

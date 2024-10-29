@@ -1,0 +1,62 @@
+@if (gameData) {
+  <mat-card class="m-4">
+    <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+      <div class="mb-2">
+        <img [height]="(gameData?.sample_cover?.height / 3)" [width]="(gameData?.sample_cover?.width / 3)" [src]="gameData?.sample_cover?.thumbnail_image">
+        <div class="row mt-5">
+          <p class="fw-semibold title">{{gameData?.title}} </p>
+          <p class="text-align fst-italic" [innerHTML]="gameData?.description"></p>
+          <p class="fw-semibold title mt-3">Genres</p>
+          @for(genre of gameData?.genres; track $index) {
+            <div class="d-inline text-start">
+              <p class="fw-semibold subtitle d-inline">Genre Category: </p>
+              <p class="d-inline">{{genre?.genre_category}} </p>
+            </div>
+            <div class="d-inline text-start">
+              <p class="fw-semibold subtitle d-inline">Genre Name: </p>
+              <p class="d-inline">{{genre?.genre_name}} </p>
+            </div>
+          }
+          <p class="fw-semibold title mt-3">Plataforms</p>
+          @for(plataform of gameData?.platforms; track $index) {
+            <div class="d-inline text-start">
+              <p class="fw-semibold subtitle d-inline">{{plataform?.platform_name + ': '}}</p>
+              <p class="d-inline">First Release date: {{plataform?.first_release_date}}</p>
+            </div>
+          }
+          <div class="d-inline text-start">
+            <p class="fw-semibold subtitle d-inline">Mobi URL: </p>
+            <a class="d-inline" [href]="gameData?.moby_url" target="_blank" style="font-size: 12px">{{ gameData?.moby_url }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="d-inline text-start">
+          <p class="mb-0 fw-semibold subtitle d-inline"> Evaluation: </p>
+          <p class="d-inline"> Evaluation: {{gameData?.moby_score}} </p>
+        </div>
+        <div class="d-inline text-start">
+          <p class="fw-semibold subtitle d-inline"> Number of votes: </p>
+          <p class="d-inline"> Number of votes: {{gameData?.num_votes}} </p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+}
+@if (skeletonLoader) {
+  <mat-card class="m-4">
+    <mat-card-content class="m-1 d-flex flex-column justify-content-between h-100">
+      <div class="mb-2">
+        <ngx-skeleton-loader count="1" appearance="circle" />
+        <div class="row mt-5">
+          <ngx-skeleton-loader count="10" appearance="line" />
+        </div>
+      </div>
+      <div class="row">
+        <ngx-skeleton-loader count="2" appearance="line" />
+      </div>
+    </mat-card-content>
+  </mat-card>
+}
+

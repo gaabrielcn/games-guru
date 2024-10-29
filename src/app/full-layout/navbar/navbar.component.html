@@ -1,0 +1,23 @@
+<header class="app-header">
+  <mat-toolbar style="background-color: #292929; justify-content: space-between; height: 80px">
+    <div>
+      <img width="300" height="300" src="assets/images/logo_transparente.png">
+      @for (navigationHoute of navigationRoutes; track $index) {
+        <button style="background-color: white; margin-right: 5px" [routerLink]="navigationHoute.path" mat-button class="button">{{ navigationHoute.title }}</button>
+      }
+    </div>
+    <div>
+      <button [matMenuTriggerFor]="menu" mat-fab style="background-color: #E5E5E5">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button [disabled]="true" mat-menu-item routerLink="profile">Profile</button>
+        <button mat-menu-item routerLink="login">Log out</button>
+      </mat-menu>
+    </div>
+
+
+
+  </mat-toolbar>
+</header>
+

@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center align-items-center h-100 color-background">
+  <mat-card class="card-mat">
+    <mat-card-content class="p-0 card-custom">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <img src="assets/images/logo.png" class="img-fluid img-custom">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-between p-4">
+          <h4 class="fw-semibold fst-italic title"> Seja bem vindo ao GamesGuru, Realize seu login. </h4>
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="row mb-3">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="user" [errorStateMatcher]="matcher">
+                @if (form.get('user').hasError('email') && !form.get('user').hasError('required')) {
+                  <mat-error>
+                    Please enter a valid email address
+                  </mat-error>
+                }
+                @if (form.get('user').hasError('required')) {
+                  <mat-error>
+                    Email is <strong>required</strong>
+                  </mat-error>
+                }
+
+              </mat-form-field>
+            </div>
+            <div class="row mb-3">
+              <mat-form-field class="example-full-width">
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher">
+                @if (form.get('password').hasError('required')) {
+                  <mat-error>
+                    Password is <strong>required</strong>
+                  </mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </form>
+          <div class="d-flex justify-content-end button-row">
+            <button mat-raised-button routerLink="/create/user">Cadastre-se</button>
+            <button mat-raised-button class="custom-button" (click)="submit()">Login</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

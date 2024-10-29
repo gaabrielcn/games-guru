@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Filtros</h2>
+<mat-dialog-content style="width: 500px; height: 400px">
+  <form [formGroup]="form" (ngSubmit)="submit()" style="height: 100%;" class="d-flex flex-column justify-content-between">
+
+    <div class="row">
+      <div class="col-md-5 m-3">
+        @if(!skeletonLoader) {
+          <mat-form-field>
+            <mat-label>Genre</mat-label>
+            <mat-select formControlName="genre" [errorStateMatcher]="matcher">
+              @for (genre of genres; track $index) {
+                <mat-option [value]="genre['genre_id']">
+                  {{genre['genre_name']}}
+                </mat-option>
+              }
+            </mat-select>
+            @if (form.get('genre').hasError('required')) {
+              <mat-error>
+                Genres is <strong>required</strong>
+              </mat-error>
+            }
+          </mat-form-field>
+        } @else {
+          <ngx-skeleton-loader count="1" appearance="line" />
+        }
+      </div>
+      <div class="col-md-5 m-3">
+        @if(!skeletonLoader) {
+          <mat-form-field>
+            <mat-label>Platform</mat-label>
+            <mat-select formControlName="platform" [errorStateMatcher]="matcher">
+              @for (platform of platform; track $index) {
+                <mat-option [value]="platform['platform_id']">
+                  {{platform['platform_name']}}
+                </mat-option>
+              }
+            </mat-select>
+            @if (form.get('platform').hasError('required')) {
+              <mat-error>
+                Platform is <strong>required</strong>
+              </mat-error>
+            }
+          </mat-form-field>
+        } @else {
+          <ngx-skeleton-loader count="1" appearance="line" />
+        }
+      </div>
+    </div>
+
+    <mat-dialog-actions class="d-flex justify-content-end">
+      @if(!skeletonLoader) {
+        <button mat-raised-button (click)="closed()" class="secondary-button">Fechar</button>
+        <button mat-raised-button type="submit" class="custom-button">Salvar</button>
+      } @else {
+        <ngx-skeleton-loader count="2" appearance="circle" />
+      }
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

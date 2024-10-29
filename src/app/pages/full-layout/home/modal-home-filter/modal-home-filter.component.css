@@ -1,0 +1,12 @@
+.button-row {
+  gap: 10px;
+}
+
+.segundary-button {
+  background-color: black;
+  color: white;
+}
+.custom-button {
+  background-color: black;
+  color: white;
+}
